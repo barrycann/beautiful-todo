@@ -18,13 +18,12 @@
       controller: 'profileCtrl',
       templateUrl: './app/components/profile/profile.html'
     })
+  }
 
-    function scrollFix($rootScope, $window){
-      $rootScope.$on('$stateChangeSuccess', function(){
-        $window.scrollTo(0, 0);
-      })
-    }
-
+  function scrollFix($rootScope, $window){
+    $rootScope.$on('$stateChangeSuccess', function(){
+      $window.scrollTo(0, 0);
+    })
   }
 
 })();

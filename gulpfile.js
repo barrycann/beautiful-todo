@@ -4,18 +4,17 @@ const gulp = require('gulp')
   , concat = require('gulp-concat')
   , CacheBuster = require('gulp-cachebust')
   , print = require('gulp-print')
-  , babel = require('gulp-babel')
-  , uglify = require('gulp-uglify');
+  , babel = require('gulp-babel');
 
 const cachebust = new CacheBuster();
 
 const paths = {
   app_JS: ['public/app/**/*.js'],
-  app_CSS: ['public/assets/styles**/*.*css'],
+  app_CSS: ['public/assets/styles/**/*.*css'],
   lib_JS: ['public/assets/lib/**/*.js'],
   lib_CSS: ['public/assets/lib/**/*.*css'],
   app_HTML: ['public/**/*.html'],
-  images: ['public/assets/images/**/*.*']
+  images: ['public/assets/img/**/*.*']
 };
 
 gulp.task('build-appCSS', () => {
@@ -44,7 +43,6 @@ gulp.task('build-appJS', () => {
     .pipe(print())
     .pipe(babel({ presets: ['es2015'] }))
     .pipe(concat('app_bundle.js'))
-    // .pipe(uglify())
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('./dist'));
 });
@@ -55,7 +53,6 @@ gulp.task('build-libJS', () => {
     .pipe(print())
     .pipe(babel({ presets: ['es2015'] }))
     .pipe(concat('lib_bundle.js'))
-    // .pipe(uglify())
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('./dist'));
 });
@@ -68,7 +65,6 @@ gulp.task('build-html', () => {
 
 gulp.task('copy-images', () => {
   gulp.src(paths.images)
-    // .pipe(imagemin())
     .pipe(gulp.dest('./dist/assets/images'));
 })
 

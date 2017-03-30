@@ -1,14 +1,32 @@
 <div class="container">
-  <h1>Beautiful To-Do</h1>
+  <h1>Simple To-Do</h1>
   <div class="row">
     <div class="col-md-4">
       <h3>To Do</h3>
+      <div ng-repeat="task in todoList">
+        <div class="list-item">
+          <h2>{{task.title}}</h2>
+          <p>{{task.description}}</p>
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
       <h3>In Progress</h3>
+      <div ng-repeat="task in inProgress">
+        <div class="list-item">
+          <h2>{{task.title}}</h2>
+          <p>{{task.description}}</p>
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
       <h3>Done</h3>
+      <div ng-repeat="task in completed">
+        <div class="list-item">
+          <h2>{{task.title}}</h2>
+          <p>{{task.description}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
