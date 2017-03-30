@@ -1,0 +1,11 @@
+# Dependency Directory
+node_modules
+
+# Config
+server/config.js
+
+# Gulp Output
+dist
+
+# VSC
+*.vscode
