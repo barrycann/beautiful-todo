@@ -7,16 +7,12 @@
     <link rel="stylesheet" href="./lib_styles.css">
     <link rel="stylesheet" href="./app_styles.css">
   </head>
-  <body>
-    <div class="nav-wrapper" ng-controller="navCtrl">
-      <nav-dir></nav-dir>
-    </div>
+  <body ng-controller="mainCtrl">
+    <nav-dir></nav-dir>
     <div class="view-wrapper">
       <ui-view></ui-view>
     </div>
-    <div class="footer-wrapper">
-      <footer-dir></footer-dir>
-    </div>
+    <footer-dir></footer-dir>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>

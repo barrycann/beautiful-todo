@@ -3,6 +3,4 @@ const db = app.get('db');
 
 module.exports = {
 
-  
-
 }
