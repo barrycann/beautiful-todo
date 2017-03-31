@@ -58,5 +58,12 @@
       })
     }
 
+    this.deleteTask = (taskid) => {
+      return $http.delete(`/api/tasks/${taskid}`)
+      .then((resp) => {
+        return resp;
+      })
+    }
+
   }
 })()

@@ -36,5 +36,15 @@ module.exports = {
       }
       res.status(200).send(results);
     })
+  },
+  deleteTask: function(req, res, next){
+    db.delete_task([req.params.taskid], function(err, results){
+      if(err){
+        console.error(err);
+        return res.send(err);
+      }
+      res.status(200).send(results);
+    })
   }
+
 }

@@ -66,6 +66,7 @@ app.get('/api/me', userCtrl.me);
 app.post('/api/tasks', tasksCtrl.createTask);
 app.get('/api/tasks/:userid', tasksCtrl.getTasksByUser);
 app.put('/api/tasks/:taskid/:progress', tasksCtrl.changeTaskProgress);
+app.delete('/api/tasks/:taskid', tasksCtrl.deleteTask);
 
 app.get('/api/logout', (req, res) => {
   req.session.destroy((err) => {

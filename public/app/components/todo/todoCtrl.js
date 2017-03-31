@@ -41,6 +41,14 @@
         return resp;
       })
     }
+
+    $scope.deleteTask = (taskId) => {
+      taskService.deleteTask(taskId)
+      .then((resp) => {
+        $scope.getUserTasks();
+        return resp;
+      })
+    }
     
   }
 
