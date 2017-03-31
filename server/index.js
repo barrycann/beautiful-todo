@@ -38,7 +38,7 @@ app.use(passport.session());
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', 
   {
-    successRedirect: '/#!/profile',
+    successRedirect: '/#!/todo',
     failureRedirect: '/#!/'
   }
 ))
@@ -64,7 +64,8 @@ app.get('/api/me', userCtrl.me);
 
 //=== Task Endpoints =============================================================
 app.post('/api/tasks', tasksCtrl.createTask);
-app.get('/api/tasks/:id', tasksCtrl.getTasksByUser);
+app.get('/api/tasks/:userid', tasksCtrl.getTasksByUser);
+app.put('/api/tasks/:taskid/:progress', tasksCtrl.changeTaskProgress);
 
 app.get('/api/logout', (req, res) => {
   req.session.destroy((err) => {

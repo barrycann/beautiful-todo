@@ -13,10 +13,10 @@
       controller: 'homeCtrl',
       templateUrl: './app/components/home/home.html'
     })
-    .state('profile', {
-      url: '/profile',
-      controller: 'profileCtrl',
-      templateUrl: './app/components/profile/profile.html'
+    .state('todo', {
+      url: '/todo',
+      controller: 'todoCtrl',
+      templateUrl: './app/components/todo/todo.html'
     })
   }
 

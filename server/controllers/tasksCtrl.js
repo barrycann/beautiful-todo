@@ -24,5 +24,17 @@ module.exports = {
       }
       res.status(200).send(results);
     })
+  },
+  changeTaskProgress: function(req, res, next){
+    db.change_task_progress([
+      req.params.taskid,
+      req.params.progress
+    ], function(err, results){
+      if(err){
+        console.error(err);
+        return res.send(err);
+      }
+      res.status(200).send(results);
+    })
   }
 }

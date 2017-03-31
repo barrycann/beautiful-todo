@@ -9,7 +9,6 @@ const config = require('./../config.js');
 // Passport and Auth0Strategy
 passport.use(new Auth0Strategy(config.AUTH_CONFIG, (accessToken, refreshToken, extraParams, profile, done) => {
     db.get_user_by_authid([profile.id], (err, user) => {
-      console.log(profile)
       user = user[0];
       if(err){ return done(err) }
       else if(!user){

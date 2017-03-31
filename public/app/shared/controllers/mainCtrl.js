@@ -7,7 +7,7 @@
     $scope.getUserData = () => {
       authService.getCurrentUser()
       .then((resp) => {
-        if(resp.data){
+        if(resp.data.authid){
           $scope.user = resp.data;
         }
       })
