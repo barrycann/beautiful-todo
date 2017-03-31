@@ -1,8 +1,11 @@
 (function(){
   angular.module('app')
-  .controller('homeCtrl', ['$scope', homeCtrl]);
+  .controller('homeCtrl', ['$scope', 'authService', homeCtrl]);
   
-  function homeCtrl($scope){
+  function homeCtrl($scope, authService){
+    
+    
+    
     $scope.todoList = [
       {
         title: 'eat',

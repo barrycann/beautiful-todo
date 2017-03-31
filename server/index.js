@@ -5,9 +5,9 @@ const express = require('express'),
       massive = require('massive'),
       config = require('./config');
 
-const dbPassword = config.DB_PASS;
+const dbPass= config.DB_PASS;
 const port = config.PORT;
-const connectionString = `postgres://postgres:${dbPassword}@localhost/todo`;
+const connectionString = `postgres://postgres:${dbPass}@localhost/todo`;
 
 //=== App Initialization with Express ============================================
 const app = module.exports = express();
@@ -22,12 +22,15 @@ app.use(session({
 }));
 
 //=== Database ===================================================================
-const massiveInstance = massive.connectSync({connectionString:connectionString});
+const massiveInstance = massive.connectSync({
+  connectionString:connectionString,
+  scripts: "server/db"
+});
 app.set('db', massiveInstance);
 const db = app.get('db');
 
 //=== Passport ===================================================================
-let passport = require('./services/passport');
+const passport = require('./services/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 

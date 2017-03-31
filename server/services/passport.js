@@ -8,14 +8,12 @@ const config = require('./../config.js');
 
 // Passport and Auth0Strategy
 passport.use(new Auth0Strategy(config.AUTH_CONFIG, (accessToken, refreshToken, extraParams, profile, done) => {
-    db.getUserByAuthId([profile.id], function(err, user){
+    db.get_user_by_authid([profile.id], (err, user) => {
+      console.log(profile)
       user = user[0];
-      // If DB Error
       if(err){ return done(err) }
-      // If the user doesn't exist
       else if(!user){
-        // Create a User 
-        db.create_user_by_auth([profile.displayName, profile.id, profile.email], function(err, user){
+        db.create_user_by_auth([profile.displayName, profile.id], function(err, user){
           if(err){ return done(err) };
           return done(null, user[0]);
         }) 
