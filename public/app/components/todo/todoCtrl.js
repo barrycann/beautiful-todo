@@ -15,22 +15,27 @@
     $scope.getUserTasks()
 
     $scope.createTask = (title, desc) => {
-      let newTask = {
-        title: title,
-        description: desc,
-        progress: 1,
-        userid: $scope.user.userid
+      if(!title || !desc){
+        alert('Ancient wisdom dictates that any task worth doing deserves to have a title and a description...');
+      } else {
+          let newTask = {
+          title: title,
+          description: desc,
+          progress: 1,
+          userid: $scope.user.userid
+        }
+        taskService.createTask(newTask)
+        .then((resp) => {
+          $scope.newTaskTitle = "";
+          $scope.newTaskDesc = "";
+          $scope.getUserTasks();
+          return resp;
+        })
+        .catch((err) => {
+          console.error(err);
+        })
       }
-      taskService.createTask(newTask)
-      .then((resp) => {
-        $scope.newTaskTitle = "";
-        $scope.newTaskDesc = "";
-        $scope.getUserTasks();
-        return resp;
-      })
-      .catch((err) => {
-        console.error(err);
-      })
+      
     }
 
     $scope.moveTask = (taskId, progress) => {
